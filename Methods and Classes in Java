@@ -1,0 +1,167 @@
+#A simple cash register class
+
+#Main
+
+package com.company;
+public class Main {
+
+    private int currentRegisterItemCount;
+    private double currentRegisterTotalCash;
+    private int allRegistersItemCount;
+    private double allRegistersTotalCash;
+    private int allRegisterCount;
+
+    public Main() {
+        currentRegisterTotalCash = 0;
+        currentRegisterItemCount = 0;
+        allRegistersTotalCash = 0;
+        allRegistersItemCount = 0;
+        allRegisterCount = 0;
+    }
+
+
+    public void checkout(double cashReceivedForOneItem) {
+        currentRegisterItemCount++;
+        currentRegisterTotalCash = currentRegisterTotalCash + cashReceivedForOneItem;
+        allRegistersItemCount = allRegistersItemCount + 1;
+        allRegistersTotalCash = allRegistersTotalCash + cashReceivedForOneItem;
+    }
+
+
+    public void checkout(int numberOfItemsCheckedOut, double pricePerItem) {
+        double cashRecieved = pricePerItem * numberOfItemsCheckedOut;
+        currentRegisterItemCount = currentRegisterItemCount + numberOfItemsCheckedOut;
+        currentRegisterTotalCash = currentRegisterTotalCash + cashRecieved;
+        allRegistersItemCount = allRegistersItemCount + numberOfItemsCheckedOut;
+        allRegistersTotalCash = allRegistersTotalCash + cashRecieved;
+    }
+
+
+    //Reset the number of items and total cash to zero for a cash register
+
+    public void cashout() {
+        allRegisterCount++;
+        currentRegisterItemCount = 0;
+        currentRegisterTotalCash = 0;
+    }
+
+
+    //Returns the number of items in the cash register
+
+    public int getItems() {
+        return currentRegisterItemCount;
+    }
+
+
+    //Returns the total cash in the cash register
+
+    public double getTotalCash() {
+        return currentRegisterTotalCash;
+    }
+
+    // Returns the average price per item checked out by the cash register
+
+    public double getAveragePricePerItem() {
+        double average = currentRegisterTotalCash / currentRegisterItemCount;
+        return average;
+    }
+
+    // Returns the number of cash registers created
+
+    public int getRegisterCount() {
+        return allRegisterCount;
+    }
+
+    // Returns the total number of items for all cash registers
+
+    public int getAllItems() {
+        return allRegistersItemCount;
+    }
+
+    //Returns the total cash for all cash registers
+
+    public double getAllTotalCash() {
+        return allRegistersTotalCash;
+    }
+
+    //add another cash register to this register
+
+    public void addCashRegister(Main cashRegister) {
+        this.allRegisterCount = cashRegister.getRegisterCount() + this.getRegisterCount();
+        this.allRegistersItemCount = cashRegister.getAllItems() + this.getAllItems();
+        this.allRegistersTotalCash = cashRegister.getAllTotalCash() + this.getAllTotalCash();
+    }
+
+    // Print for the current cash register the following
+
+    public void printInfoForCurrentRegister() {
+        System.out.println("The total items: " + this.getItems());
+        System.out.println("Total cash: " + this.getTotalCash());
+        System.out.println("Average price per item: " + this.getAveragePricePerItem());
+    }
+
+    // Print for all the cash registers the following
+
+    public void printInfoForAllRegisters() {
+        System.out.println("The number of cash registers created: " + this.getRegisterCount());
+        System.out.println("The total items checked out for all cash registers: " + this.getAllItems());
+        System.out.println("The total cash for all cash registers: " + this.getAllTotalCash());
+    }
+
+}
+
+
+#CashREgisterTest
+
+
+package com.company;
+
+public class CashRegisterTest1 {
+
+    public static void main(String[] args) {
+        Main r1 = new Main();
+        System.out.println("----------------");
+        System.out.println("Cash Register 1");
+        System.out.println("----------------");
+        r1.checkout(10);
+        r1.checkout(2, 20);
+        r1.printInfoForCurrentRegister();
+        r1.cashout();
+
+        System.out.println("----------------");
+        System.out.println("Cash Register 2");
+        System.out.println("----------------");
+        r1.checkout(10);
+        r1.checkout(2, 10);
+        r1.printInfoForCurrentRegister();
+        r1.cashout();
+
+        System.out.println("----------------");
+        System.out.println("Cash Register 3");
+        System.out.println("----------------");
+        Main r2 = new Main();
+        r2.checkout(10);
+        r2.printInfoForCurrentRegister();
+        r2.cashout();
+
+        // some all up into register 1
+        r1.addCashRegister(r2);
+
+        System.out.println("----------------");
+        System.out.println("Cash Register 4");
+        System.out.println("----------------");
+        Main r3 = new Main();
+        r3.checkout(3, 15);
+        r3.printInfoForCurrentRegister();
+        r3.cashout();
+
+        // some all up into register 1
+        r1.addCashRegister(r3);
+
+        System.out.println("----------------");
+        System.out.println("Cash Registers - All");
+        System.out.println("----------------");
+        r1.printInfoForAllRegisters();
+    }
+
+}
