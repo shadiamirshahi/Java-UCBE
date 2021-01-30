@@ -1,0 +1,62 @@
+#A program that will search a given file for a string
+#Take a string and a file as a command-line argument
+#Handle various exceptions such as file not found
+#Print the number of occurrences of the given string after reading the
+
+package com.company;
+
+import java.io.*;
+
+public class FileWordCount
+
+{
+
+public static void main(String[] args) {
+
+try {
+
+File f1 = new File(args[0]);
+
+int count = 0;
+
+FileReader fr = new FileReader(f1);
+
+BufferedReader br = new BufferedReader(fr);
+
+String string ;
+
+while ((string=br.readLine()) != null)
+
+for (int i = 0; i < string.length(); i++) {
+
+if (string == String.valueOf(i)) ;
+
+count++;
+
+}
+
+fr.close();
+
+System.out.println("number of occurrences of the given string:" + count );
+
+} catch (IOException e) {
+
+System.out.println(" Problem with the format " );
+
+}
+
+catch (ArrayIndexOutOfBoundsException e){
+
+System.out.println("Out of Bounds");
+
+}
+
+finally {
+
+System.out.println("Reached Finally Block");
+
+}
+
+}
+
+}
