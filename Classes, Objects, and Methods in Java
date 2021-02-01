@@ -1,0 +1,29 @@
+//write a method to return true if the country code is 1 and false otherwise.
+public class isUSA { 
+     public static void main(String[] args) { 
+        int countrycode = 1; 
+        System.out.println(countrycode == 1); // returns true, because the value of countrycode is equal to 1 
+        System.out.println(countrycode != 1); 
+        } 
+     }
+     
+
+//write a method that determines the location of an area code. 
+public class Phone { 
+     public static void main(String[] args) {
+        int countrycode = 1;
+        if (countrycode == 1) {
+        int value=510; 
+        int value1=650;
+        int value2=415; 
+        int value3=408; 
+        String s1=String.valueOf(value);
+        String s2=String.valueOf(value1); 
+        String s3=String.valueOf(value2); 
+        String s4=String.valueOf(value3);
+
+System.out.println("Country code=" + countrycode + " and area code= "+s1+" East Bay Area"); //concatenating string with 510 
+System.out.println("Country code=" + countrycode + " and area code= "+ s2 +" SF Peninsula"); //concatenating string with 650
+System.out.println("Country code=" + countrycode + " and area code= "+s3+" San Francisco"); //concatenating string with 415 
+System.out.println("Country code=" + countrycode + " and area code= "+s4+" South Bay Area"); //concatenating string with 408 }
+
