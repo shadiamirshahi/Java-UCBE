@@ -1,0 +1,54 @@
+//Initialize a two dimensional array with any type and values of your choosing.
+
+class In {
+
+    public static void main(String[] args) {
+
+    String[][] list = {
+
+          {"Mr. ", "Mrs. ", "Ms. "},
+
+          {"Smith" ,"Rich " , "Cooper"}
+
+};
+
+       // Ms. Smith
+
+       System.out.println(list [0][2] + list[1][0]);
+
+      // Mrs. Cooper
+
+       System.out.println(list [0][1] + list[1][2]);
+
+     // Mr. Rich
+
+       System.out.println(list [0][0] + list [1][1]);
+
+   }
+
+}
+
+
+//Write a method that returns the average of an int array. The array has one dimension and can be of any size.
+
+public class average {
+
+     public static void main(String args[]) {
+
+          int[] value = {20, 50, 100, 18, 2};
+
+          int average = 0;
+
+          for (int i = 0; i < value.length ; i++) {
+
+              average = average + value[i];
+
+}
+
+         int Average = average / value.length;
+
+         System.out.println("Averege:" +Average);
+
+    }
+
+}
