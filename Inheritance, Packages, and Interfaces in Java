@@ -1,0 +1,201 @@
+//classes that will extend the given Animal class and optionally implement a leg count interface
+
+//This is Animal Qualities
+package com.company;
+
+
+class Duck extends AnimalQualities implements LegCount, AnimalTypee{
+
+
+    public int getLegCount() {
+        return 2;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public String getCovering() {
+        return AnimalTypee.FEATHER;
+        //throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+
+    public void makeSound() {
+        System.out.println("Duck:  quack quack");
+
+
+    }
+
+
+    public boolean canFly() {
+        return true;
+    }
+
+}
+
+class Cat extends AnimalQualities implements LegCount, AnimalTypee{
+
+
+    public int getLegCount() {
+        return 4;
+    }
+
+
+    public String getCovering() {
+        return AnimalTypee.FUR;
+    }
+
+
+    public void makeSound() {
+
+        System.out.println("Cat:   Meow");
+
+    }
+
+
+    public boolean canFly() {
+        return false;
+    }
+}
+class Dog extends AnimalQualities implements LegCount, AnimalTypee{
+
+
+    public int getLegCount() {
+        return 4;
+    }
+
+
+    public String getCovering() {
+        return AnimalTypee.FUR;
+    }
+
+
+    public void makeSound() {
+        System.out.println("Dog:   Woof");
+
+    }
+
+
+    public boolean canFly() {
+        return false;
+    }
+}
+class Fish extends AnimalQualities implements  AnimalTypee{
+
+
+
+
+    public String getCovering() {
+        return AnimalTypee.SHELL.concat(SCALE);
+    }
+
+
+    public void makeSound() {
+        System.out.println("Fish:  Blub Blub");
+
+    }
+
+
+    public boolean canFly() {
+        return false;
+    }
+}
+class FlyingFish extends AnimalQualities implements  AnimalTypee {
+
+    public String getCovering() {
+        return AnimalTypee.SKIN.concat(SCALE);
+    }
+
+
+    public void makeSound() {
+        System.out.println("Flying Fish: Blub Blub");
+    }
+
+
+    public boolean canFly() {
+        return true;
+    }
+}
+
+
+package com.company;
+
+public class AnimalQualities {
+
+    public static void main(String[] args) {
+        Duck aDuck = new Duck();
+        Cat aCat = new Cat();
+        Dog aDog = new Dog();
+        Fish aFish = new Fish();
+        FlyingFish FFish = new FlyingFish();
+
+        System.out.println(" Animal LegCount " );
+        System.out.println(" Duck " + aDuck.getLegCount() );
+        System.out.println(" Cat  " + aCat.getLegCount());
+        System.out.println(" Dog  " + aDog.getLegCount());
+
+        System.out.println("----------------- " );
+        System.out.println("Animal Covering " );
+        System.out.println("Duck : " + aDuck.getCovering());
+        System.out.println("Cat  : " + aCat.getCovering());
+        System.out.println("Dog  : " + aDog.getCovering());
+        System.out.println("Fish : " + aFish.getCovering());
+        System.out.println("Flying Fish : " + FFish.getCovering());
+
+        System.out.println("----------------- " );
+        System.out.println("Sound " );
+        aDuck.makeSound();
+        aCat.makeSound();
+        aDog.makeSound();
+        aFish.makeSound();
+        FFish.makeSound();
+        
+        System.out.println("----------------- " );
+        System.out.println("Can Fly?  " );
+        System.out.println("Duck:   " + aDuck.canFly());
+        System.out.println("Cat :   " + aCat.canFly());
+        System.out.println("Dog :   " + aDog.canFly());
+        System.out.println("Fish:   " + aFish.canFly());
+        System.out.println("Flying Fish : " + FFish.canFly());
+
+
+    }
+
+}
+
+//Animal Type
+
+package com.company;
+
+
+interface AnimalTypee {
+    String FUR="fur";
+    String FEATHER="feather";
+    String SCALE="scale";
+    String SHELL="shell";
+    String SKIN="skin";
+
+
+    abstract String getCovering();
+    abstract void makeSound();
+    abstract boolean canFly();
+
+
+
+}
+
+//Leg Count
+
+package com.company;
+
+interface LegCount {
+    public int getLegCount();
+
+
+}
+
+
+
+
+
+
+
